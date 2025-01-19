@@ -1,0 +1,35 @@
+* NGSPICE file created from and2.ext - technology: sky130B
+
+.subckt sky130_fd_pr__nfet_01v8_UMD3L6 a_n33_91# a_30_n131# a_n88_n131# VSUBS
+X0 a_30_n131# a_n33_91# a_n88_n131# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_A6G7W3 a_n88_n100# a_n266_n126# a_148_n100# a_324_n126#
++ a_n148_n126# a_206_n126# a_n560_n100# w_n596_n162# a_88_n126# a_n442_n100# a_502_n100#
++ a_n324_n100# a_n502_n126# a_384_n100# a_30_n100# a_n206_n100# a_n384_n126# a_n30_n126#
++ a_442_n126# a_266_n100#
+X0 a_502_n100# a_442_n126# a_384_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X1 a_384_n100# a_324_n126# a_266_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X2 a_266_n100# a_206_n126# a_148_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X3 a_n324_n100# a_n384_n126# a_n442_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X4 a_n442_n100# a_n502_n126# a_n560_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X5 a_148_n100# a_88_n126# a_30_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X6 a_n206_n100# a_n266_n126# a_n324_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=0p ps=0u w=1e+06u l=300000u
+X7 a_n88_n100# a_n148_n126# a_n206_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=0p ps=0u w=1e+06u l=300000u
+X8 a_30_n100# a_n30_n126# a_n88_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__nfet_01v8_M82KHF a_n33_n257# a_30_n169# a_n88_n169# VSUBS
+X0 a_30_n169# a_n33_n257# a_n88_n169# VSUBS sky130_fd_pr__nfet_01v8 ad=5.8e+11p pd=4.58e+06u as=5.8e+11p ps=4.58e+06u w=2e+06u l=300000u
+.ends
+
+.subckt and2 A B VSS VDD OUT
+Xsky130_fd_pr__nfet_01v8_UMD3L6_0 a_803_288# OUT VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__pfet_01v8_A6G7W3_0 VDD A VDD a_803_288# B a_803_288# VDD VDD B a_803_288#
++ OUT VDD A VDD a_803_288# a_803_288# A B a_803_288# OUT sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__nfet_01v8_M82KHF_1 A sky130_fd_pr__nfet_01v8_M82KHF_1/a_30_n169# a_803_288#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_2 B VSS sky130_fd_pr__nfet_01v8_M82KHF_1/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+.ends
+

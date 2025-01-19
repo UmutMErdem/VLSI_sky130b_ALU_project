@@ -1,0 +1,39 @@
+** sch_path: /home/ume/Desktop/designFinal/xschem/array_multiplayer_tb.sch
+**.subckt array_multiplayer_tb
+VDD VDD GND 1.2
+VDD1 VSS GND 0
+x1 A[0] A[1] A[2] A[3] B[0] B[1] B[2] B[3] VDD VSS Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7]
++ array_multiplier
+V1 B[2] GND pulse(0, 1.2, 40n, 0.1p, 0.1p, 20n, 80n)
+V4 B[3] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V2 B[1] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 40n)
+V9 A[2] GND 1.2
+V11 A[3] GND 0
+V12 A[1] GND 0
+V10 A[0] GND 1.2
+V3 B[0] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 40n)
+**** begin user architecture code
+
+
+.include /home/ume/Desktop/designFinal/mag/array_multiplier_pex.spice
+.control
+save all
+
+set color0 = white
+tran 10p 80n
+
+plot "a[0]" "a[1]"+2 "a[2]"+4 "a[3]"+6
+plot "b[0]" "b[1]"+2 "b[2]"+4 "b[3]"+6
+plot "y[0]" "y[1]"+2 "y[2]"+4 "y[3]"+6 "y[4]"+8 "y[5]"+10 "y[6]"+12 "y[7]"+14
+
+.endc
+
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt_mm
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

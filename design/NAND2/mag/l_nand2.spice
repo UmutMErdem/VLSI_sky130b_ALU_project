@@ -1,0 +1,26 @@
+* NGSPICE file created from nand2.ext - technology: sky130B
+
+.subckt sky130_fd_pr__pfet_01v8_A64S85 a_207_n100# a_n29_n100# a_n207_n126# a_265_n126#
++ a_89_n100# a_n89_n126# a_147_n126# a_n383_n100# a_29_n126# a_n265_n100# a_325_n100#
++ a_n147_n100# a_n325_n126#
+X0 a_n29_n100# a_n89_n126# a_n147_n100# w_n419_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X1 a_n265_n100# a_n325_n126# a_n383_n100# w_n419_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X2 a_89_n100# a_29_n126# a_n29_n100# w_n419_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=0p ps=0u w=1e+06u l=300000u
+X3 a_n147_n100# a_n207_n126# a_n265_n100# w_n419_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+X4 a_325_n100# a_265_n126# a_207_n100# w_n419_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X5 a_207_n100# a_147_n126# a_89_n100# w_n419_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__nfet_01v8_8H4MRT a_30_n69# a_n33_n157# a_n88_n69# VSUBS
+X0 a_30_n69# a_n33_n157# a_n88_n69# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+.ends
+
+.subckt nand2 VSS A B Y
+Xsky130_fd_pr__pfet_01v8_A64S85_0 Y Y A B m1_50_250# A B m1_50_250# B Y m1_50_250#
++ m1_50_250# A sky130_fd_pr__pfet_01v8_A64S85
+Xsky130_fd_pr__nfet_01v8_8H4MRT_0 VSS B sky130_fd_pr__nfet_01v8_8H4MRT_1/a_30_n69#
++ VSUBS sky130_fd_pr__nfet_01v8_8H4MRT
+Xsky130_fd_pr__nfet_01v8_8H4MRT_1 sky130_fd_pr__nfet_01v8_8H4MRT_1/a_30_n69# A Y VSUBS
++ sky130_fd_pr__nfet_01v8_8H4MRT
+.ends
+

@@ -1,0 +1,101 @@
+magic
+tech sky130B
+magscale 1 2
+timestamp 1732994707
+<< error_s >>
+rect -1159 4283 -941 4647
+rect -680 4266 -462 6790
+rect -206 4270 12 6794
+rect 270 4266 488 6790
+rect 748 4264 966 6788
+rect 1220 4262 1438 5666
+rect 1300 3626 1358 3632
+rect 1300 3592 1312 3626
+rect 1300 3586 1358 3592
+rect -1124 3470 -1066 3554
+rect -1036 3470 -978 3554
+rect -644 2804 -586 3554
+rect -556 2804 -498 3554
+rect -170 2804 -112 3554
+rect -82 2804 -24 3554
+rect 306 2802 364 3552
+rect 394 2802 452 3552
+rect 784 2800 842 3550
+rect 872 2800 930 3550
+rect 1256 3154 1314 3554
+rect 1344 3154 1402 3554
+<< poly >>
+rect -1066 3566 -1034 4326
+rect -586 3566 -554 4326
+rect -112 3570 -82 4318
+rect 364 3568 396 4328
+rect 842 3564 874 4322
+<< metal1 >>
+rect 34 6942 234 7142
+rect -1788 4260 -1588 4460
+rect 2166 4176 2366 4376
+rect -1788 3860 -1588 4060
+rect -1788 3460 -1588 3660
+rect -1130 2454 1416 2654
+use sky130_fd_pr__nfet_01v8_NLS8WF  XM2
+timestamp 0
+transform 1 0 379 0 1 3177
+box -73 -401 73 401
+use sky130_fd_pr__nfet_01v8_NLS8WF  XM3
+timestamp 0
+transform 1 0 -571 0 1 3179
+box -73 -401 73 401
+use sky130_fd_pr__nfet_01v8_NLS8WF  XM4
+timestamp 0
+transform 1 0 857 0 1 3175
+box -73 -401 73 401
+use sky130_fd_pr__pfet_01v8_2DTEBM  XM5
+timestamp 0
+transform 1 0 -97 0 1 5532
+box -109 -1262 109 1262
+use sky130_fd_pr__pfet_01v8_2DTEBM  XM6
+timestamp 0
+transform 1 0 857 0 1 5526
+box -109 -1262 109 1262
+use sky130_fd_pr__pfet_01v8_2DTEBM  XM7
+timestamp 0
+transform 1 0 -571 0 1 5528
+box -109 -1262 109 1262
+use sky130_fd_pr__nfet_01v8_8S8SP7  XM11
+timestamp 0
+transform 1 0 -1051 0 1 3512
+box -73 -68 73 68
+use sky130_fd_pr__pfet_01v8_2ZBLDN  XM12
+timestamp 0
+transform 1 0 -1050 0 1 4465
+box -109 -182 109 182
+use sky130_fd_pr__nfet_01v8_J2X3EG  sky130_fd_pr__nfet_01v8_J2X3EG_0
+timestamp 0
+transform 1 0 1329 0 1 3385
+box -73 -257 73 257
+use sky130_fd_pr__nfet_01v8_NLS8WF  sky130_fd_pr__nfet_01v8_NLS8WF_0
+timestamp 0
+transform 1 0 -97 0 1 3179
+box -73 -401 73 401
+use sky130_fd_pr__pfet_01v8_2DTEBM  sky130_fd_pr__pfet_01v8_2DTEBM_0
+timestamp 0
+transform 1 0 379 0 1 5528
+box -109 -1262 109 1262
+use sky130_fd_pr__pfet_01v8_2MSL3K  sky130_fd_pr__pfet_01v8_2MSL3K_0
+timestamp 0
+transform 1 0 1329 0 1 4964
+box -109 -702 109 702
+<< labels >>
+flabel metal1 2166 4176 2366 4376 0 FreeSans 256 0 0 0 OUT
+port 5 nsew
+flabel metal1 -1788 4260 -1588 4460 0 FreeSans 256 0 0 0 S
+port 2 nsew
+flabel metal1 -1788 3860 -1588 4060 0 FreeSans 256 0 0 0 D0
+port 3 nsew
+flabel metal1 -1788 3460 -1588 3660 0 FreeSans 256 0 0 0 D1
+port 4 nsew
+flabel metal1 30 2454 230 2654 0 FreeSans 256 0 0 0 VSS
+port 0 nsew
+flabel metal1 34 6942 234 7142 0 FreeSans 256 0 0 0 VDD
+port 1 nsew
+<< end >>

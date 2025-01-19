@@ -1,0 +1,16 @@
+| units: 500000 tech: sky130B format: MIT
+x A VDD Y w_1_6# l=60 w=200 x=95 y=68 sky130_fd_pr__pfet_01v8
+x A VDD Y w_1_6# l=60 w=200 x=331 y=68 sky130_fd_pr__pfet_01v8
+x B Y VDD w_1_6# l=60 w=200 x=685 y=68 sky130_fd_pr__pfet_01v8
+x A Y a_392_n376# VSUBS l=60 w=200 x=332 y=-375 sky130_fd_pr__nfet_01v8
+x B Y VDD w_1_6# l=60 w=200 x=449 y=68 sky130_fd_pr__pfet_01v8
+x B VDD Y w_1_6# l=60 w=200 x=567 y=68 sky130_fd_pr__pfet_01v8
+x A Y VDD w_1_6# l=60 w=200 x=213 y=68 sky130_fd_pr__pfet_01v8
+x B a_392_n376# VSS VSUBS l=60 w=200 x=450 y=-375 sky130_fd_pr__nfet_01v8
+R VSS 494
+R Y 3802
+R VDD 4524
+R B 1346
+R A 1348
+R a_392_n376# 493
+R w_1_6# 2457

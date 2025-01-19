@@ -1,0 +1,80 @@
+* NGSPICE file created from nand2_pex.ext - technology: sky130B
+
+.subckt nand2 A B VSS VDD Y
+X0 Y.t4 A.t0 VDD.t2 w_1_6# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+X1 Y.t3 A.t1 VDD.t1 w_1_6# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+X2 VDD.t0 B.t0 Y.t0 w_1_6# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+X3 a_392_n376# A.t2 Y.t1 VSUBS sky130_fd_pr__nfet_01v8 ad=2.9e+11p pd=2.58e+06u as=0p ps=0u w=1e+06u l=300000u
+X4 VDD.t4 B.t1 Y.t5 w_1_6# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+X5 Y.t6 B.t2 VDD.t5 w_1_6# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+X6 VDD.t3 A.t3 Y.t2 w_1_6# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+X7 VSS.t0 B.t3 a_392_n376# VSUBS sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+R0 A.t2 A.t1 362.717
+R1 A.n0 A.t0 214.686
+R2 A.t1 A.n0 214.686
+R3 A A.t2 136.113
+R4 A.n0 A.t3 80.333
+R5 VDD.n3 VDD.t0 30.163
+R6 VDD.n1 VDD.t2 30.163
+R7 VDD.n2 VDD.t5 28.565
+R8 VDD.n2 VDD.t4 28.565
+R9 VDD.n0 VDD.t1 28.565
+R10 VDD.n0 VDD.t3 28.565
+R11 VDD.n3 VDD.n2 0.747
+R12 VDD.n1 VDD.n0 0.747
+R13 VDD.n4 VDD.n3 0.366
+R14 VDD.n4 VDD.n1 0.316
+R15 VDD VDD.n4 0.279
+R16 Y.n0 Y.t2 28.565
+R17 Y.n0 Y.t4 28.565
+R18 Y.n2 Y.t5 28.565
+R19 Y.n2 Y.t3 28.565
+R20 Y.n4 Y.t0 28.565
+R21 Y.n4 Y.t6 28.565
+R22 Y.n1 Y.t1 18.171
+R23 Y.n1 Y.n0 1.003
+R24 Y.n5 Y.n3 0.837
+R25 Y.n3 Y.n2 0.653
+R26 Y.n5 Y.n4 0.65
+R27 Y.n3 Y.n1 0.341
+R28 Y.n6 Y.n5 0.227
+R29 Y.n6 Y 0.103
+R30 Y Y.n6 0.021
+R31 B.t3 B.t1 362.717
+R32 B.n0 B.t0 214.335
+R33 B.t1 B.n0 214.335
+R34 B B.t3 136.618
+R35 B.n0 B.t2 80.333
+R36 VSS.n0 VSS.t0 18.161
+R37 VSS.n0 VSS 0.025
+R38 VSS VSS.n0 0.003
+C0 A a_392_n376# 0.00fF
+C1 Y w_1_6# 0.03fF
+C2 VDD a_392_n376# 0.01fF
+C3 Y VSS 0.07fF
+C4 B w_1_6# 0.06fF
+C5 A Y 0.12fF
+C6 B VSS 0.02fF
+C7 A B 0.36fF
+C8 VDD Y 1.27fF
+C9 Y a_392_n376# 0.20fF
+C10 VDD B 0.04fF
+C11 B a_392_n376# 0.02fF
+C12 w_1_6# VSS 0.02fF
+C13 A w_1_6# 0.06fF
+C14 A VSS 0.01fF
+C15 VDD w_1_6# 0.06fF
+C16 Y B 0.04fF
+C17 a_392_n376# w_1_6# 0.00fF
+C18 VDD VSS 0.02fF
+C19 a_392_n376# VSS 0.18fF
+C20 VDD A 0.05fF
+C21 VSS VSUBS 0.39fF
+C22 Y VSUBS 0.32fF
+C23 VDD VSUBS 0.63fF
+C24 B VSUBS 0.63fF
+C25 A VSUBS 0.49fF
+C26 a_392_n376# VSUBS 0.02fF
+C27 w_1_6# VSUBS 0.81fF
+.ends
+

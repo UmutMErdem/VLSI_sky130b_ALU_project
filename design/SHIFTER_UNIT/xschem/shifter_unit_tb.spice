@@ -1,0 +1,107 @@
+** sch_path: /home/ahmet/Desktop/ALU_All/shifter_unit_tb.sch
+**.subckt shifter_unit_tb
+V17 dir GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 40n)
+V1 A[2] GND pulse(0, 1.2, 40n, 0.1p, 0.1p, 20n, 80n)
+V3 A[0] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 80n)
+V4 A[3] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V2 A[1] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 40n)
+V5 A[6] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 40n, 80n)
+V6 A[4] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 40n)
+V7 A[7] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V8 A[5] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 40n, 80n)
+VDD VDD GND 1.2
+VDD1 VSS GND 0
+x1 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] dir VSS VDD
++ shifter_unit
+**** begin user architecture code
+
+.control
+save all
+
+set color0 = white
+tran 200p 80n
+
+plot "a[0]" "a[1]"+2 "a[2]"+4 "a[3]"+6 "a[4]"+8 "a[5]"+10 "a[6]"+12 "a[7]"+14
+plot "y[0]" "y[1]"+2 "y[2]"+4 "y[3]"+6 "y[4]"+8 "y[5]"+10 "y[6]"+12 "y[7]"+14
+plot v(dir)
+.endc
+
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt_mm
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  shifter_unit.sym # of pins=5
+** sym_path: /home/ahmet/Desktop/ALU_All/shifter_unit.sym
+** sch_path: /home/ahmet/Desktop/ALU_All/shifter_unit.sch
+.subckt shifter_unit  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6]
++ Y[7] dir VSS VDD
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.ipin dir
+*.iopin VSS
+*.iopin VDD
+x9 VSS VDD dir VSS A[1] Y[0] 2x1_mux
+x1 VSS VDD dir A[0] A[2] Y[1] 2x1_mux
+x2 VSS VDD dir A[1] A[3] Y[2] 2x1_mux
+x3 VSS VDD dir A[2] A[4] Y[3] 2x1_mux
+x4 VSS VDD dir A[3] A[5] Y[4] 2x1_mux
+x5 VSS VDD dir A[4] A[6] Y[5] 2x1_mux
+x6 VSS VDD dir A[5] A[7] Y[6] 2x1_mux
+x7 VSS VDD dir A[6] VSS Y[7] 2x1_mux
+.ends
+
+
+* expanding   symbol:  2x1_mux.sym # of pins=6
+** sym_path: /home/ahmet/Desktop/ALU_All/2x1_mux.sym
+** sch_path: /home/ahmet/Desktop/ALU_All/2x1_mux.sch
+.subckt 2x1_mux  VSS VDD S D0 D1 OUT
+*.iopin VSS
+*.iopin VDD
+*.ipin S
+*.ipin D0
+*.ipin D1
+*.opin OUT
+XM2 net1 S_BAR net3 VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 net2 D1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net3 D0 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 net1 S_BAR net4 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM7 net4 D1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM8 net4 S VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM9 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM10 OUT net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM12 S_BAR S VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM11 S_BAR S VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net1 S net2 VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 net1 D0 net4 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.end

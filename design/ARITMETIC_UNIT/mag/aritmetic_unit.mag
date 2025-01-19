@@ -1,0 +1,21 @@
+magic
+tech sky130B
+magscale 1 2
+timestamp 1736750414
+use array_multiplier_pex  array_multiplier_pex_0
+timestamp 1736713522
+transform 1 0 1129 0 1 9593
+box -1129 -9593 33781 6232
+use carry_ripple_adder_pex  carry_ripple_adder_pex_0
+timestamp 1736091534
+transform 1 0 4911 0 1 22755
+box -165 -5646 26650 5555
+use logic_xor  logic_xor_0
+timestamp 1736542081
+transform 0 -1 -3988 1 0 132
+box -132 -1530 16159 1012
+use mux8  mux8_0
+timestamp 1736750414
+transform 0 -1 37987 1 0 1117
+box -1124 -1678 23921 842
+<< end >>

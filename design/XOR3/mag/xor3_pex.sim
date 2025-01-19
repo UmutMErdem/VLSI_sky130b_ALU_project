@@ -1,0 +1,74 @@
+| units: 500000 tech: sky130B format: MIT
+x a_n89_215# a_456_n478# a_338_n478# w_n125_153# l=60 w=400 x=514 y=-477 sky130_fd_pr__pfet_01v8
+x A a_456_n478# a_692_n1210# a_647_n1695# l=60 w=400 x=632 y=-1209 sky130_fd_pr__nfet_01v8
+x A VDD a_n89_215# w_n125_153# l=60 w=200 x=87 y=215 sky130_fd_pr__pfet_01v8
+x a_456_n478# VDD a_2236_n478# w_n125_153# l=60 w=400 x=2587 y=215 sky130_fd_pr__pfet_01v8
+x B a_692_n1210# VSS a_647_n1695# l=60 w=400 x=750 y=-1209 sky130_fd_pr__nfet_01v8
+x B a_338_n478# VDD w_n125_153# l=60 w=400 x=1043 y=215 sky130_fd_pr__pfet_01v8
+x C VDD a_2648_n504# w_n125_153# l=60 w=200 x=3424 y=215 sky130_fd_pr__pfet_01v8
+x C a_2236_n478# VDD w_n125_153# l=60 w=400 x=2705 y=215 sky130_fd_pr__pfet_01v8
+x B VDD a_338_n478# w_n125_153# l=60 w=400 x=925 y=215 sky130_fd_pr__pfet_01v8
+x C VDD a_2648_n504# w_n125_153# l=60 w=200 x=3188 y=215 sky130_fd_pr__pfet_01v8
+x a_456_n478# a_2236_n478# VDD w_n125_153# l=60 w=400 x=2469 y=215 sky130_fd_pr__pfet_01v8
+x A VDD a_338_n478# w_n125_153# l=60 w=400 x=689 y=215 sky130_fd_pr__pfet_01v8
+x a_1809_215# OUT a_2236_n478# w_n125_153# l=60 w=400 x=2412 y=-477 sky130_fd_pr__pfet_01v8
+x C a_2648_n504# VDD w_n125_153# l=60 w=200 x=3306 y=215 sky130_fd_pr__pfet_01v8
+x a_2648_n504# OUT a_2236_n478# w_n125_153# l=60 w=400 x=2648 y=-477 sky130_fd_pr__pfet_01v8
+x a_750_n504# VSS a_456_n1210# a_647_n1695# l=60 w=400 x=868 y=-1209 sky130_fd_pr__nfet_01v8
+x B a_338_n478# VDD w_n125_153# l=60 w=400 x=807 y=215 sky130_fd_pr__pfet_01v8
+x a_456_n478# VDD a_2236_n478# w_n125_153# l=60 w=400 x=2351 y=215 sky130_fd_pr__pfet_01v8
+x a_750_n504# a_456_n478# a_338_n478# w_n125_153# l=60 w=400 x=750 y=-477 sky130_fd_pr__pfet_01v8
+x B VSS a_750_n504# a_647_n1695# l=60 w=200 x=1392 y=-1009 sky130_fd_pr__nfet_01v8
+x A a_338_n478# VDD w_n125_153# l=60 w=400 x=571 y=215 sky130_fd_pr__pfet_01v8
+x a_750_n504# a_456_n478# a_338_n478# w_n125_153# l=60 w=400 x=986 y=-477 sky130_fd_pr__pfet_01v8
+x A a_n89_215# VSS a_647_n1695# l=60 w=200 x=94 y=-1009 sky130_fd_pr__nfet_01v8
+x A VDD a_338_n478# w_n125_153# l=60 w=400 x=453 y=215 sky130_fd_pr__pfet_01v8
+x a_1809_215# a_2354_n1210# OUT a_647_n1695# l=60 w=400 x=2412 y=-1209 sky130_fd_pr__nfet_01v8
+x a_456_n478# a_1809_215# VDD w_n125_153# l=60 w=200 x=2103 y=215 sky130_fd_pr__pfet_01v8
+x a_456_n478# OUT a_2590_n1210# a_647_n1695# l=60 w=400 x=2530 y=-1209 sky130_fd_pr__nfet_01v8
+x A a_n89_215# VDD w_n125_153# l=60 w=200 x=-30 y=215 sky130_fd_pr__pfet_01v8
+x a_n89_215# a_338_n478# a_456_n478# w_n125_153# l=60 w=400 x=396 y=-477 sky130_fd_pr__pfet_01v8
+x B VDD a_750_n504# w_n125_153# l=60 w=200 x=1526 y=215 sky130_fd_pr__pfet_01v8
+x a_2648_n504# OUT a_2236_n478# w_n125_153# l=60 w=400 x=2884 y=-477 sky130_fd_pr__pfet_01v8
+x B VDD a_750_n504# w_n125_153# l=60 w=200 x=1290 y=215 sky130_fd_pr__pfet_01v8
+x a_n89_215# a_338_n478# a_456_n478# w_n125_153# l=60 w=400 x=632 y=-477 sky130_fd_pr__pfet_01v8
+x a_456_n478# VDD a_1809_215# w_n125_153# l=60 w=200 x=1985 y=215 sky130_fd_pr__pfet_01v8
+x A a_n89_215# VDD w_n125_153# l=60 w=200 x=205 y=215 sky130_fd_pr__pfet_01v8
+x a_750_n504# a_338_n478# a_456_n478# w_n125_153# l=60 w=400 x=868 y=-477 sky130_fd_pr__pfet_01v8
+x B a_750_n504# VDD w_n125_153# l=60 w=200 x=1408 y=215 sky130_fd_pr__pfet_01v8
+x C a_2236_n478# VDD w_n125_153# l=60 w=400 x=2941 y=215 sky130_fd_pr__pfet_01v8
+x a_1809_215# a_2236_n478# OUT w_n125_153# l=60 w=400 x=2294 y=-477 sky130_fd_pr__pfet_01v8
+x a_456_n478# a_1809_215# VSS a_647_n1695# l=60 w=200 x=1992 y=-1009 sky130_fd_pr__nfet_01v8
+x C a_2590_n1210# VSS a_647_n1695# l=60 w=400 x=2648 y=-1209 sky130_fd_pr__nfet_01v8
+x a_456_n478# a_1809_215# VDD w_n125_153# l=60 w=200 x=1867 y=215 sky130_fd_pr__pfet_01v8
+x a_1809_215# a_2236_n478# OUT w_n125_153# l=60 w=400 x=2530 y=-477 sky130_fd_pr__pfet_01v8
+x a_2648_n504# VSS a_2354_n1210# a_647_n1695# l=60 w=400 x=2766 y=-1209 sky130_fd_pr__nfet_01v8
+x C VDD a_2236_n478# w_n125_153# l=60 w=400 x=2823 y=215 sky130_fd_pr__pfet_01v8
+x a_2648_n504# a_2236_n478# OUT w_n125_153# l=60 w=400 x=2766 y=-477 sky130_fd_pr__pfet_01v8
+x a_n89_215# a_456_n1210# a_456_n478# a_647_n1695# l=60 w=400 x=514 y=-1209 sky130_fd_pr__nfet_01v8
+x C VSS a_2648_n504# a_647_n1695# l=60 w=200 x=3290 y=-1009 sky130_fd_pr__nfet_01v8
+C a_2236_n478# OUT 2.33
+C a_338_n478# VDD 2.53
+C a_2236_n478# VDD 2.52
+C a_338_n478# a_456_n478# 2.33
+C VSS GND 2.03
+R VSS 5440
+R OUT 6886
+R VDD 25109
+R C 4107
+R B 4107
+R A 4047
+R a_2590_n1210# 982
+R a_2354_n1210# 2454
+R a_692_n1210# 982
+R a_456_n1210# 2454
+R a_2648_n504# 4648
+R a_2236_n478# 13420
+R a_1809_215# 4743
+R a_750_n504# 4648
+R a_338_n478# 13420
+R a_n89_215# 4743
+R a_456_n478# 10923
+C w_n125_153# GND 8.59
+R w_n125_153# 11682
+R a_647_n1695# 316

@@ -1,0 +1,28 @@
+extract all
+ext2spice lvs
+ext2spice
+save
+mag: inverter.spice -> l_inverter.spice
+
+netgen: lvs "inverter.spice inverter" "l_inverter.spice inverter"
+
+select
+expand
+flatten inverter_pex
+load inverter_pex
+select
+save
+extract all
+ext2sim label on
+ext2sim
+extresist tolerance 10
+extresist all
+ext2spice lvs
+ext2spice cthresh 0
+ext2spice extresist on
+ext2spice
+
+mag: .subckt inverter_pex -> .subckt inverter -> into inverter_pex.spice
+xschem: inverter.sym -> type=primitive
+control xschem inverter.sym pin order and saming pin order of inverter_pex.spice and inverter.spice
+xschem: .include /home/ume/Desktop/design/mag/inverter_pex.spice -> into ngspice code shown

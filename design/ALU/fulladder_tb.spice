@@ -1,0 +1,29 @@
+** sch_path: /home/ume/Desktop/designFinal/xschem/fulladder_tb.sch
+**.subckt fulladder_tb
+VDD VDD GND 1.2
+V3 A GND pulse(0, 1.2, 0.02u, 0.1p, 0.1p, 20n, 40n)
+V4 B GND pulse(0, 1.2, 0.01u, 0.1p, 0.1p, 10n, 20n)
+V1 Cin GND pulse(0, 1.2, 0.01u, 0.1p, 0.1p, 10n, 20n)
+x1 A B Cin VDD GND c_OUT OUT fulladder
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt_mm
+
+
+
+
+.include /home/ume/Desktop/designFinal/mag/fulladder_pex.spice
+.control
+save all
+
+set color0 = white
+tran 1p 40n
+plot v(OUT) v(c_OUT)+2 v(A)+4 v(B)+6 v(Cin)+8
+
+.endc
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

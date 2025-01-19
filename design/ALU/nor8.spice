@@ -1,0 +1,63 @@
+** sch_path: /home/ahmet/Desktop/ALU_All/nor8.sch
+**.subckt nor8 A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7] VDD VSS Y
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.iopin VDD
+*.iopin VSS
+*.opin Y
+x1 A[0] A[1] VSS VDD net1 or2
+x2 A[2] A[3] VSS VDD net2 or2
+x3 A[4] A[5] VSS VDD net3 or2
+x4 A[6] A[7] VSS VDD net4 or2
+x5 net1 net2 VSS VDD net5 or2
+x6 net3 net4 VSS VDD net6 or2
+x7 net5 net6 VSS VDD net7 or2
+x8 VDD Y net7 VSS inverter
+**.ends
+
+* expanding   symbol:  or2.sym # of pins=5
+** sym_path: /home/ahmet/Desktop/ALU_All/or2.sym
+** sch_path: /home/ahmet/Desktop/ALU_All/or2.sch
+.subckt or2  A B VSS VDD OUT
+*.ipin A
+*.ipin B
+*.iopin VSS
+*.iopin VDD
+*.opin OUT
+XM3 net1 A net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net2 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net1 A VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 B VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 OUT net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  inverter.sym # of pins=4
+** sym_path: /home/ahmet/Desktop/ALU_All/inverter.sym
+** sch_path: /home/ahmet/Desktop/ALU_All/inverter.sch
+.subckt inverter  VDD OUT IN VSS
+*.ipin IN
+*.iopin VDD
+*.opin OUT
+*.iopin VSS
+XM2 OUT IN VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.9 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 OUT IN VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.end

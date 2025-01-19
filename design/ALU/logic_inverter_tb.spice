@@ -1,0 +1,70 @@
+** sch_path: /home/ahmet/Desktop/arithmetic_unit/logic_inverter_tb.sch
+**.subckt logic_inverter_tb
+VDD VDD GND 1.2
+V1 A[2] GND pulse(0, 1.2, 40n, 0.1p, 0.1p, 20n, 80n)
+V3 A[0] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 80n)
+V4 A[3] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V2 A[1] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 40n)
+V5 A[6] GND pulse(0, 1.2, 40n, 0.1p, 0.1p, 20n, 80n)
+V6 A[4] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 40n)
+V7 A[7] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V8 A[5] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 80n)
+x1 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] GND VDD
++ logic_inverter
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt_mm
+
+
+
+.control
+save all
+
+set color0 = white
+tran 1p 80n
+plot "a[0]" "a[1]"+2 "a[2]"+4 "a[3]"+6 "a[4]"+8 "a[5]"+10 "a[6]"+12 "a[7]"+14
+plot "y[0]" "y[1]"+2 "y[2]"+4 "y[3]"+6 "y[4]"+8 "y[5]"+10 "y[6]"+12 "y[7]"+14
+.endc
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  logic_inverter.sym # of pins=4
+** sym_path: /home/ahmet/Desktop/arithmetic_unit/logic_inverter.sym
+** sch_path: /home/ahmet/Desktop/arithmetic_unit/logic_inverter.sch
+.subckt logic_inverter  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6]
++ Y[7] VSS VDD
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VSS
+*.iopin VDD
+x1 VDD Y[0] A[0] VSS inverter
+x2 VDD Y[1] A[1] VSS inverter
+x3 VDD Y[2] A[2] VSS inverter
+x4 VDD Y[3] A[3] VSS inverter
+x5 VDD Y[4] A[4] VSS inverter
+x6 VDD Y[5] A[5] VSS inverter
+x7 VDD Y[6] A[6] VSS inverter
+x8 VDD Y[7] A[7] VSS inverter
+.ends
+
+
+* expanding   symbol:  inverter.sym # of pins=4
+** sym_path: /home/ahmet/Desktop/arithmetic_unit/inverter.sym
+** sch_path: /home/ahmet/Desktop/arithmetic_unit/inverter.sch
+.subckt inverter  VDD OUT IN VSS
+*.ipin IN
+*.iopin VDD
+*.opin OUT
+*.iopin VSS
+XM2 OUT IN VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.9 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 OUT IN VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.end

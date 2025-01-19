@@ -1,0 +1,48 @@
+** sch_path: /home/ume/Desktop/designFinal/xschem/carry_ripple_adder_tb.sch
+**.subckt carry_ripple_adder_tb
+x1 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] Cin VDD GND Y[0]
++ Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] c_OUT carry_ripple_adder
+V1 A[2] GND pulse(0, 1.2, 40n, 0.1p, 0.1p, 20n, 80n)
+V3 A[0] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 80n)
+V4 A[3] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V2 A[1] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 40n)
+V5 A[6] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 40n, 80n)
+V6 A[4] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 40n)
+V7 A[7] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V8 A[5] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 40n, 80n)
+V9 B[2] GND pulse(0, 1.2, 40n, 0.1p, 0.1p, 20n, 80n)
+V11 B[3] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V12 B[1] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 80n)
+V15 B[7] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 20n, 80n)
+V10 B[0] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 20n, 40n)
+V16 B[5] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 40n)
+VDD VDD GND 1.2
+V14 B[4] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 40n)
+V13 B[6] GND pulse(0, 1.2, 20n, 0.1p, 0.1p, 20n, 40n)
+VDD1 Cin GND 0
+**** begin user architecture code
+
+
+.include /home/ume/Desktop/design4/mag/carry_ripple_adder_pex.spice
+.control
+save all
+
+set color0 = white
+tran 10p 80n
+
+plot "a[0]" "a[1]"+2 "a[2]"+4 "a[3]"+6 "a[4]"+8 "a[5]"+10 "a[6]"+12 "a[7]"+14
+plot "b[0]" "b[1]"+2 "b[2]"+4 "b[3]"+6 "b[4]"+8 "b[5]"+10 "b[6]"+12 "b[7]"+14
+plot "y[0]" "y[1]"+2 "y[2]"+4 "y[3]"+6 "y[4]"+8 "y[5]"+10 "y[6]"+12 "y[7]"+14
+plot v(cin)
+plot v(c_out)
+.endc
+
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt_mm
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

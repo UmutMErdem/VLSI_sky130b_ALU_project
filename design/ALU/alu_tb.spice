@@ -1,0 +1,641 @@
+** sch_path: /home/ume/Desktop/designFinal/xschem/alu_tb.sch
+**.subckt alu_tb
+V3 A[0] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+V2 A[1] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V18 opcode[0] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 80n)
+V19 opcode[3] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+x1 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] opcode[0]
++ opcode[1] opcode[2] opcode[3] GND VDD flags[0] flags[1] flags[2] flags[3] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6]
++ Y[7] ALU
+VDD VDD GND 1.2
+V17 opcode[1] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 80n)
+V20 opcode[2] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 80n)
+V1 A[2] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+V4 A[3] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+V8 A[5] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+V5 A[4] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V6 A[6] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V7 A[7] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V9 B[0] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+V10 B[1] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+V12 B[2] GND pulse(0, 1.2, 60n, 0.1p, 0.1p, 60n, 80n)
+V11 B[4] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V13 B[5] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V14 B[6] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V15 B[7] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+V16 B[3] GND pulse(0, 1.2, 0n, 0.1p, 0.1p, 60n, 40n)
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /usr/local/share/pdk/sky130B/libs.tech/ngspice/sky130.lib.spice tt_mm
+
+
+
+.control
+save all
+
+set color0 = white
+tran 10p 100n
+
+plot "a[0]" "a[1]"+2 "a[2]"+4 "a[3]"+6 "a[4]"+8 "a[5]"+10 "a[6]"+12 "a[7]"+14
+plot "b[0]" "b[1]"+2 "b[2]"+4 "b[3]"+6 "b[4]"+8 "b[5]"+10 "b[6]"+12 "b[7]"+14
+plot "y[0]" "y[1]"+2 "y[2]"+4 "y[3]"+6 "y[4]"+8 "y[5]"+10 "y[6]"+12 "y[7]"+14
+plot "opcode[0]" "opcode[1]"+2 "opcode[2]"+4 "opcode[3]"+6
+plot "flags[0]" "flags[1]"+2 "flags[2]"+4 "flags[3]"+6
+.endc
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ALU.sym # of pins=7
+** sym_path: /home/ume/Desktop/designFinal/xschem/ALU.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/ALU.sch
+.subckt ALU  A[7] A[6] A[5] A[4] A[3] A[2] A[1] A[0] B[7] B[6] B[5] B[4] B[3] B[2] B[1] B[0]
++ opcode[3] opcode[2] opcode[1] opcode[0] VSS VDD flags[0] flags[1] flags[2] flags[3] Y[0] Y[1] Y[2] Y[3] Y[4]
++ Y[5] Y[6] Y[7]
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+*.ipin opcode[0],opcode[1],opcode[2],opcode[3]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VDD
+*.iopin VSS
+*.opin flags[0],flags[1],flags[2],flags[3]
+x1 net1 A[7] VDD VSS B[7] xor2
+x2 VDD net2 net3 VSS inverter
+x3 net3 A[7] VDD VSS Y[7] xor2
+x4 B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2]
++ Y[3] Y[4] Y[5] Y[6] Y[7] VDD VSS opcode[0] opcode[1] opcode[2] opcode[3] flags[2] control_unit
+x5 VSS net1 net2 VDD flags[1] and2
+x6 Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] VSS VDD flags[3] nor8
+.ends
+
+
+* expanding   symbol:  xor2.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/xor2.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/xor2.sch
+.subckt xor2  Y A VDD VSS B
+*.opin Y
+*.ipin A
+*.iopin VDD
+*.iopin VSS
+*.ipin B
+XM7 net1 A VDD VDD sky130_fd_pr__pfet_01v8 L=0.30 W=6 nf=6 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM8 net1 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.30 W=6 nf=6 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 Y inv_B net1 VDD sky130_fd_pr__pfet_01v8 L=0.30 W=6 nf=6 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 Y inv_A net1 VDD sky130_fd_pr__pfet_01v8 L=0.30 W=6 nf=6 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 Y A net2 VSS sky130_fd_pr__nfet_01v8 L=0.30 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 net2 B VSS VSS sky130_fd_pr__nfet_01v8 L=0.30 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y inv_A net3 VSS sky130_fd_pr__nfet_01v8 L=0.30 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net3 inv_B VSS VSS sky130_fd_pr__nfet_01v8 L=0.30 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM12 inv_B B VDD VDD sky130_fd_pr__pfet_01v8 L=0.30 W=3 nf=3 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM11 inv_B B VSS VSS sky130_fd_pr__nfet_01v8 L=0.30 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM10 inv_A A VDD VDD sky130_fd_pr__pfet_01v8 L=0.30 W=3 nf=3 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM9 inv_A A VSS VSS sky130_fd_pr__nfet_01v8 L=0.30 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  inverter.sym # of pins=4
+** sym_path: /home/ume/Desktop/designFinal/xschem/inverter.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/inverter.sch
+.subckt inverter  VDD OUT IN VSS
+*.ipin IN
+*.iopin VDD
+*.opin OUT
+*.iopin VSS
+XM2 OUT IN VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.9 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 OUT IN VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  control_unit.sym # of pins=7
+** sym_path: /home/ume/Desktop/designFinal/xschem/control_unit.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/control_unit.sch
+.subckt control_unit  B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] A[0] A[1] A[2] A[3] A[4] A[5] A[6]
++ A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] VDD VSS opcode[0] opcode[1] opcode[2] opcode[3] Cout
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VDD
+*.iopin VSS
+*.ipin opcode[0],opcode[1],opcode[2],opcode[3]
+*.opin Cout
+x1 B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] l_u_out[0] l_u_out[1] l_u_out[2] l_u_out[3] l_u_out[4]
++ l_u_out[5] l_u_out[6] l_u_out[7] VDD VSS opcode[0] opcode[1] A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7]
++ logic_unit
+x3 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] opcode[0]
++ opcode[1] a_u_out[0] a_u_out[1] a_u_out[2] a_u_out[3] a_u_out[4] a_u_out[5] a_u_out[6] a_u_out[7] Cout VSS
++ VDD arithmetic_unit
+x4 VSS VDD opcode[2] a_u_out[7] l_u_out[7] net8 2x1_mux
+x5 VSS VDD opcode[2] a_u_out[6] l_u_out[6] net7 2x1_mux
+x6 VSS VDD opcode[2] a_u_out[5] l_u_out[5] net6 2x1_mux
+x7 VSS VDD opcode[2] a_u_out[4] l_u_out[4] net5 2x1_mux
+x8 VSS VDD opcode[2] a_u_out[3] l_u_out[3] net4 2x1_mux
+x9 VSS VDD opcode[2] a_u_out[2] l_u_out[2] net3 2x1_mux
+x10 VSS VDD opcode[2] a_u_out[1] l_u_out[1] net2 2x1_mux
+x11 VSS VDD opcode[2] a_u_out[0] l_u_out[0] net1 2x1_mux
+x12 VSS VDD opcode[3] net8 s_u_out[7] Y[7] 2x1_mux
+x13 VSS VDD opcode[3] net7 s_u_out[6] Y[6] 2x1_mux
+x14 VSS VDD opcode[3] net6 s_u_out[5] Y[5] 2x1_mux
+x15 VSS VDD opcode[3] net5 s_u_out[4] Y[4] 2x1_mux
+x16 VSS VDD opcode[3] net4 s_u_out[3] Y[3] 2x1_mux
+x17 VSS VDD opcode[3] net3 s_u_out[2] Y[2] 2x1_mux
+x18 VSS VDD opcode[3] net2 s_u_out[1] Y[1] 2x1_mux
+x19 VSS VDD opcode[3] net1 s_u_out[0] Y[0] 2x1_mux
+x20 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] s_u_out[0] s_u_out[1] s_u_out[2] s_u_out[3] s_u_out[4]
++ s_u_out[5] s_u_out[6] s_u_out[7] opcode[0] VSS VDD shifter_unit
+.ends
+
+
+* expanding   symbol:  and2.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/and2.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/and2.sch
+.subckt and2  VSS A B VDD OUT
+*.iopin VSS
+*.ipin A
+*.ipin B
+*.iopin VDD
+*.opin OUT
+XM2 net2 B VSS VSS sky130_fd_pr__nfet_01v8 L=0.30 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net1 A net2 VSS sky130_fd_pr__nfet_01v8 L=0.30 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 net1 A VDD VDD sky130_fd_pr__pfet_01v8 L=0.3 W=3 nf=3 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net1 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.30 W=3 nf=3 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 OUT net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.30 W=3 nf=3 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.30 W=2 nf=2 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  nor8.sym # of pins=4
+** sym_path: /home/ume/Desktop/designFinal/xschem/nor8.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/nor8.sch
+.subckt nor8  A[7] A[6] A[5] A[4] A[3] A[2] A[1] A[0] VSS VDD Y
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.iopin VDD
+*.iopin VSS
+*.opin Y
+x1 A[0] A[1] VSS VDD net1 or2
+x2 A[2] A[3] VSS VDD net2 or2
+x3 A[4] A[5] VSS VDD net3 or2
+x4 A[6] A[7] VSS VDD net4 or2
+x5 net1 net2 VSS VDD net5 or2
+x6 net3 net4 VSS VDD net6 or2
+x7 net5 net6 VSS VDD net7 or2
+x8 VDD Y net7 VSS inverter
+.ends
+
+
+* expanding   symbol:  logic_unit.sym # of pins=6
+** sym_path: /home/ume/Desktop/designFinal/xschem/logic_unit.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/logic_unit.sch
+.subckt logic_unit  B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7]
++ VDD VSS opcode[0] opcode[1] A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7]
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VDD
+*.iopin VSS
+*.ipin opcode[0],opcode[1]
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+x1 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y_or[0] Y_or[1] Y_or[2] Y_or[3] Y_or[4] Y_or[5] Y_or[6]
++ Y_or[7] VSS VDD B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] logic_or
+x2 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y_and[0] Y_and[1] Y_and[2] Y_and[3] Y_and[4] Y_and[5]
++ Y_and[6] Y_and[7] VSS VDD B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] logic_and
+x3 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y_xor[0] Y_xor[1] Y_xor[2] Y_xor[3] Y_xor[4] Y_xor[5]
++ Y_xor[6] Y_xor[7] VSS VDD B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7] logic_xor
+x4 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y_inv[0] Y_inv[1] Y_inv[2] Y_inv[3] Y_inv[4] Y_inv[5]
++ Y_inv[6] Y_inv[7] VSS VDD logic_inverter
+x5 VSS VDD opcode[0] Y_and[0] Y_or[0] L1[0] 2x1_mux
+x6 VSS VDD opcode[0] Y_and[1] Y_or[1] L1[1] 2x1_mux
+x7 VSS VDD opcode[0] Y_and[2] Y_or[2] L1[2] 2x1_mux
+x8 VSS VDD opcode[0] Y_and[3] Y_or[3] L1[3] 2x1_mux
+x9 VSS VDD opcode[0] Y_and[4] Y_or[4] L1[4] 2x1_mux
+x10 VSS VDD opcode[0] Y_and[5] Y_or[5] L1[5] 2x1_mux
+x11 VSS VDD opcode[0] Y_and[6] Y_or[6] L1[6] 2x1_mux
+x12 VSS VDD opcode[0] Y_and[7] Y_or[7] L1[7] 2x1_mux
+x13 VSS VDD opcode[0] Y_xor[0] Y_inv[0] L2[0] 2x1_mux
+x14 VSS VDD opcode[0] Y_xor[1] Y_inv[1] L2[1] 2x1_mux
+x15 VSS VDD opcode[0] Y_xor[2] Y_inv[2] L2[2] 2x1_mux
+x16 VSS VDD opcode[0] Y_xor[3] Y_inv[3] L2[3] 2x1_mux
+x17 VSS VDD opcode[0] Y_xor[4] Y_inv[4] L2[4] 2x1_mux
+x18 VSS VDD opcode[0] Y_xor[5] Y_inv[5] L2[5] 2x1_mux
+x19 VSS VDD opcode[0] Y_xor[6] Y_inv[6] L2[6] 2x1_mux
+x20 VSS VDD opcode[0] Y_xor[7] Y_inv[7] L2[7] 2x1_mux
+x21 VSS VDD opcode[1] L1[0] L2[0] Y[0] 2x1_mux
+x22 VSS VDD opcode[1] L1[1] L2[1] Y[1] 2x1_mux
+x23 VSS VDD opcode[1] L1[2] L2[2] Y[2] 2x1_mux
+x24 VSS VDD opcode[1] L1[3] L2[3] Y[3] 2x1_mux
+x25 VSS VDD opcode[1] L1[4] L2[4] Y[4] 2x1_mux
+x26 VSS VDD opcode[1] L1[5] L2[5] Y[5] 2x1_mux
+x27 VSS VDD opcode[1] L1[6] L2[6] Y[6] 2x1_mux
+x28 VSS VDD opcode[1] L1[7] L2[7] Y[7] 2x1_mux
+.ends
+
+
+* expanding   symbol:  arithmetic_unit.sym # of pins=7
+** sym_path: /home/ume/Desktop/designFinal/xschem/arithmetic_unit.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/arithmetic_unit.sch
+.subckt arithmetic_unit  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] B[0] B[1] B[2] B[3] B[4] B[5] B[6]
++ B[7] opcode[0] opcode[1] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] Cout VSS VDD
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+*.ipin opcode[0],opcode[1]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.opin Cout
+*.iopin VSS
+*.iopin VDD
+x1 sub[0] opcode[0] VDD VSS B[0] xor2
+x2 sub[1] opcode[0] VDD VSS B[1] xor2
+x3 sub[2] opcode[0] VDD VSS B[2] xor2
+x4 sub[3] opcode[0] VDD VSS B[3] xor2
+x5 sub[4] opcode[0] VDD VSS B[4] xor2
+x6 sub[5] opcode[0] VDD VSS B[5] xor2
+x7 sub[6] opcode[0] VDD VSS B[6] xor2
+x8 sub[7] opcode[0] VDD VSS B[7] xor2
+x9 VSS VDD opcode[1] adder[0] multi[0] Y[0] 2x1_mux
+x10 VSS VDD opcode[1] adder[1] multi[1] Y[1] 2x1_mux
+x11 VSS VDD opcode[1] adder[2] multi[2] Y[2] 2x1_mux
+x12 VSS VDD opcode[1] adder[3] multi[3] Y[3] 2x1_mux
+x13 VSS VDD opcode[1] adder[4] multi[4] Y[4] 2x1_mux
+x14 VSS VDD opcode[1] adder[5] multi[5] Y[5] 2x1_mux
+x15 VSS VDD opcode[1] adder[6] multi[6] Y[6] 2x1_mux
+x16 VSS VDD opcode[1] adder[7] multi[7] Y[7] 2x1_mux
+x18 A[3] A[4] A[5] A[6] B[3] B[4] B[5] B[6] VDD VSS multi[0] multi[1] multi[2] multi[3] multi[4]
++ multi[5] multi[6] multi[7] array_multiplier
+x17 A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] sub[0] sub[1] sub[2] sub[3] sub[4] sub[5] sub[6] sub[7]
++ opcode[0] VDD VSS adder[0] adder[1] adder[2] adder[3] adder[4] adder[5] adder[6] adder[7] Cout
++ carry_ripple_adder
+.ends
+
+
+* expanding   symbol:  2x1_mux.sym # of pins=6
+** sym_path: /home/ume/Desktop/designFinal/xschem/2x1_mux.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/2x1_mux.sch
+.subckt 2x1_mux  VSS VDD S D0 D1 OUT
+*.iopin VSS
+*.iopin VDD
+*.ipin S
+*.ipin D0
+*.ipin D1
+*.opin OUT
+XM2 net1 S_BAR net3 VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 net2 D1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net3 D0 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 net1 S_BAR net4 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM7 net4 D1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM8 net4 S VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM9 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM10 OUT net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM12 S_BAR S VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM11 S_BAR S VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net1 S net2 VSS sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 net1 D0 net4 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  shifter_unit.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/shifter_unit.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/shifter_unit.sch
+.subckt shifter_unit  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6]
++ Y[7] dir VSS VDD
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.ipin dir
+*.iopin VSS
+*.iopin VDD
+x9 VSS VDD dir VSS A[1] Y[0] 2x1_mux
+x1 VSS VDD dir A[0] A[2] Y[1] 2x1_mux
+x2 VSS VDD dir A[1] A[3] Y[2] 2x1_mux
+x3 VSS VDD dir A[2] A[4] Y[3] 2x1_mux
+x4 VSS VDD dir A[3] A[5] Y[4] 2x1_mux
+x5 VSS VDD dir A[4] A[6] Y[5] 2x1_mux
+x6 VSS VDD dir A[5] A[7] Y[6] 2x1_mux
+x7 VSS VDD dir A[6] VSS Y[7] 2x1_mux
+.ends
+
+
+* expanding   symbol:  or2.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/or2.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/or2.sch
+.subckt or2  A B VSS VDD OUT
+*.ipin A
+*.ipin B
+*.iopin VSS
+*.iopin VDD
+*.opin OUT
+XM3 net1 A net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net2 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net1 A VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 B VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 OUT net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  logic_or.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/logic_or.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/logic_or.sch
+.subckt logic_or  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7]
++ VSS VDD B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7]
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VSS
+*.iopin VDD
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+x1 A[0] B[0] VSS VDD Y[0] or2
+x2 A[1] B[1] VSS VDD Y[1] or2
+x3 A[2] B[2] VSS VDD Y[2] or2
+x4 A[3] B[3] VSS VDD Y[3] or2
+x5 A[4] B[4] VSS VDD Y[4] or2
+x6 A[5] B[5] VSS VDD Y[5] or2
+x7 A[6] B[6] VSS VDD Y[6] or2
+x8 A[7] B[7] VSS VDD Y[7] or2
+.ends
+
+
+* expanding   symbol:  logic_and.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/logic_and.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/logic_and.sch
+.subckt logic_and  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7]
++ VSS VDD B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7]
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VSS
+*.iopin VDD
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+x1 VSS A[0] B[0] VDD Y[0] and2
+x2 VSS A[1] B[1] VDD Y[1] and2
+x3 VSS A[2] B[2] VDD Y[2] and2
+x4 VSS A[3] B[3] VDD Y[3] and2
+x5 VSS A[4] B[4] VDD Y[4] and2
+x6 VSS A[5] B[5] VDD Y[5] and2
+x7 VSS A[6] B[6] VDD Y[6] and2
+x8 VSS A[7] B[7] VDD Y[7] and2
+.ends
+
+
+* expanding   symbol:  logic_xor.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/logic_xor.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/logic_xor.sch
+.subckt logic_xor  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7]
++ VSS VDD B[0] B[1] B[2] B[3] B[4] B[5] B[6] B[7]
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VSS
+*.iopin VDD
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+x1 Y[0] A[0] VDD VSS B[0] xor2
+x2 Y[1] A[1] VDD VSS B[1] xor2
+x3 Y[2] A[2] VDD VSS B[2] xor2
+x4 Y[3] A[3] VDD VSS B[3] xor2
+x5 Y[4] A[4] VDD VSS B[4] xor2
+x6 Y[5] A[5] VDD VSS B[5] xor2
+x7 Y[6] A[6] VDD VSS B[6] xor2
+x8 Y[7] A[7] VDD VSS B[7] xor2
+.ends
+
+
+* expanding   symbol:  logic_inverter.sym # of pins=4
+** sym_path: /home/ume/Desktop/designFinal/xschem/logic_inverter.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/logic_inverter.sch
+.subckt logic_inverter  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6]
++ Y[7] VSS VDD
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.iopin VSS
+*.iopin VDD
+x1 VDD Y[0] A[0] VSS inverter
+x2 VDD Y[1] A[1] VSS inverter
+x3 VDD Y[2] A[2] VSS inverter
+x4 VDD Y[3] A[3] VSS inverter
+x5 VDD Y[4] A[4] VSS inverter
+x6 VDD Y[5] A[5] VSS inverter
+x7 VDD Y[6] A[6] VSS inverter
+x8 VDD Y[7] A[7] VSS inverter
+.ends
+
+
+* expanding   symbol:  array_multiplier.sym # of pins=5
+** sym_path: /home/ume/Desktop/designFinal/xschem/array_multiplier.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/array_multiplier.sch
+.subckt array_multiplier  A[0] A[1] A[2] A[3] B[0] B[1] B[2] B[3] VDD VSS Y[0] Y[1] Y[2] Y[3] Y[4]
++ Y[5] Y[6] Y[7]
+*.ipin A[0],A[1],A[2],A[3]
+*.ipin B[0],B[1],B[2],B[3]
+*.iopin VDD
+*.iopin VSS
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+x1 VSS A[1] B[1] VDD net1 and2
+x2 VSS A[2] B[0] VDD net2 and2
+x3 VSS A[2] B[1] VDD net3 and2
+x4 VSS A[3] B[0] VDD net4 and2
+x5 net1 net2 net30 VDD VSS net5 net24 fulladder
+x6 net3 net4 net5 VDD VSS net10 net7 fulladder
+x7 VSS A[1] B[2] VDD net6 and2
+x8 net7 net6 net31 VDD VSS net8 net26 fulladder
+x9 VSS A[3] B[1] VDD net9 and2
+x10 net10 net9 net8 VDD VSS net13 net12 fulladder
+x11 VSS A[2] B[2] VDD net11 and2
+x12 net12 net11 net32 VDD VSS net15 net20 fulladder
+x13 VSS A[3] B[2] VDD net14 and2
+x14 VSS A[2] B[3] VDD net17 and2
+x15 VSS A[1] B[3] VDD net19 and2
+x17 VSS A[0] B[1] VDD net21 and2
+x18 VSS A[1] B[0] VDD net22 and2
+x19 VSS A[0] B[2] VDD net23 and2
+x20 VSS A[0] B[3] VDD net25 and2
+x21 VSS A[3] B[3] VDD net28 and2
+x22 net16 net17 net18 VDD VSS net29 Y[5] fulladder
+x23 net20 net19 Y[4] net18 VDD VSS half_adder
+x16 net13 net14 net15 VDD VSS net27 net16 fulladder
+x24 net24 net23 Y[2] net31 VDD VSS half_adder
+x25 net21 net22 Y[1] net30 VDD VSS half_adder
+x26 VSS A[0] B[0] VDD Y[0] and2
+x27 net26 net25 Y[3] net32 VDD VSS half_adder
+x28 net27 net28 net29 VDD VSS Y[7] Y[6] fulladder
+.ends
+
+
+* expanding   symbol:  carry_ripple_adder.sym # of pins=7
+** sym_path: /home/ume/Desktop/designFinal/xschem/carry_ripple_adder.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/carry_ripple_adder.sch
+.subckt carry_ripple_adder  A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] B[0] B[1] B[2] B[3] B[4] B[5]
++ B[6] B[7] carry_in VDD VSS Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] carry_out
+*.ipin A[0],A[1],A[2],A[3],A[4],A[5],A[6],A[7]
+*.ipin B[0],B[1],B[2],B[3],B[4],B[5],B[6],B[7]
+*.ipin carry_in
+*.iopin VDD
+*.iopin VSS
+*.opin Y[0],Y[1],Y[2],Y[3],Y[4],Y[5],Y[6],Y[7]
+*.opin carry_out
+x1 A[0] B[0] carry_in VDD VSS net1 Y[0] fulladder
+x2 A[1] B[1] net1 VDD VSS net2 Y[1] fulladder
+x3 A[2] B[2] net2 VDD VSS net3 Y[2] fulladder
+x4 A[3] B[3] net3 VDD VSS net4 Y[3] fulladder
+x5 A[4] B[4] net4 VDD VSS net5 Y[4] fulladder
+x6 A[5] B[5] net5 VDD VSS net6 Y[5] fulladder
+x7 A[6] B[6] net6 VDD VSS net7 Y[6] fulladder
+x8 A[7] B[7] net7 VDD VSS carry_out Y[7] fulladder
+.ends
+
+
+* expanding   symbol:  fulladder.sym # of pins=7
+** sym_path: /home/ume/Desktop/designFinal/xschem/fulladder.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/fulladder.sch
+.subckt fulladder  A B carry_in VDD VSS carry_out Y
+*.ipin A
+*.ipin B
+*.ipin carry_in
+*.opin Y
+*.opin carry_out
+*.iopin VDD
+*.iopin VSS
+x1 VSS A B VDD net1 and2
+x2 VSS B carry_in VDD net2 and2
+x3 VSS A carry_in VDD net3 and2
+x4 VDD net1 net3 net2 carry_out VSS or3
+x5 VDD A Y B carry_in VSS xor3
+.ends
+
+
+* expanding   symbol:  half_adder.sym # of pins=6
+** sym_path: /home/ume/Desktop/designFinal/xschem/half_adder.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/half_adder.sch
+.subckt half_adder  A B Y carry_out VDD VSS
+*.ipin A
+*.ipin B
+*.opin Y
+*.opin carry_out
+*.iopin VDD
+*.iopin VSS
+x1 Y A VDD VSS B xor2
+x2 VSS A B VDD carry_out and2
+.ends
+
+
+* expanding   symbol:  or3.sym # of pins=6
+** sym_path: /home/ume/Desktop/designFinal/xschem/or3.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/or3.sch
+.subckt or3  VDD A B C OUT VSS
+*.ipin A
+*.ipin B
+*.iopin VSS
+*.iopin VDD
+*.opin OUT
+*.ipin C
+XM4 net1 A net3 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM6 net2 C VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net1 A VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 B VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 net3 B net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 net1 C VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM7 OUT net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.9 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM8 OUT net1 VSS VSS sky130_fd_pr__nfet_01v8 L=0.15 W=0.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  xor3.sym # of pins=6
+** sym_path: /home/ume/Desktop/designFinal/xschem/xor3.sym
+** sch_path: /home/ume/Desktop/designFinal/xschem/xor3.sch
+.subckt xor3  VDD A OUT B C VSS
+*.ipin C
+*.iopin VSS
+*.ipin A
+*.ipin B
+*.opin OUT
+*.iopin VDD
+x1 net1 A VDD VSS B xor2
+x2 OUT net1 VDD VSS C xor2
+.ends
+
+.GLOBAL GND
+.end
