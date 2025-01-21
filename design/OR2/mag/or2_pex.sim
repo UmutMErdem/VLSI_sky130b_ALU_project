@@ -1,0 +1,21 @@
+| units: 500000 tech: sky130B format: MIT
+x A a_494_787# a_612_787# VDD l=60 w=400 x=552 y=787 sky130_fd_pr__pfet_01v8
+x B a_494_787# VSS VSS l=60 w=200 x=580 y=204 sky130_fd_pr__nfet_01v8
+x A VSS a_494_787# VSS l=60 w=200 x=462 y=204 sky130_fd_pr__nfet_01v8
+x B a_612_787# VDD VDD l=60 w=400 x=1142 y=787 sky130_fd_pr__pfet_01v8
+x A a_494_787# a_612_787# VDD l=60 w=400 x=788 y=787 sky130_fd_pr__pfet_01v8
+x B VDD a_612_787# VDD l=60 w=400 x=1024 y=787 sky130_fd_pr__pfet_01v8
+x B a_612_787# VDD VDD l=60 w=400 x=906 y=787 sky130_fd_pr__pfet_01v8
+x a_494_787# VDD OUT VDD l=60 w=200 x=1099 y=204 sky130_fd_pr__pfet_01v8
+x A a_612_787# a_494_787# VDD l=60 w=400 x=670 y=787 sky130_fd_pr__pfet_01v8
+x a_494_787# OUT VDD VDD l=60 w=200 x=981 y=204 sky130_fd_pr__pfet_01v8
+x a_494_787# OUT VDD VDD l=60 w=200 x=1217 y=204 sky130_fd_pr__pfet_01v8
+x a_494_787# VSS OUT VSS l=60 w=200 x=698 y=204 sky130_fd_pr__nfet_01v8
+R OUT 2554
+R A 2121
+R B 2823
+C VDD GND 3.65
+R VDD 8908
+R VSS 1603
+R a_612_787# 5463
+R a_494_787# 5560

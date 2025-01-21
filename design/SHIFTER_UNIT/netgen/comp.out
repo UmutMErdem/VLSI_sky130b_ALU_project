@@ -1,0 +1,39 @@
+
+Subcircuit summary:
+Circuit 1: shifter_unit                    |Circuit 2: shifter_unit                    
+-------------------------------------------|-------------------------------------------
+sky130_fd_pr__nfet_01v8 (48)               |sky130_fd_pr__nfet_01v8 (48)               
+sky130_fd_pr__pfet_01v8 (48)               |sky130_fd_pr__pfet_01v8 (48)               
+Number of devices: 96                      |Number of devices: 96                      
+Number of nets: 59                         |Number of nets: 59                         
+---------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: shifter_unit                    |Circuit 2: shifter_unit                    
+-------------------------------------------|-------------------------------------------
+A[0]                                       |A[0]                                       
+Y[5]                                       |Y[5]                                       
+Y[4]                                       |Y[4]                                       
+Y[3]                                       |Y[3]                                       
+Y[2]                                       |Y[2]                                       
+Y[6]                                       |Y[6]                                       
+Y[7]                                       |Y[7]                                       
+Y[1]                                       |Y[1]                                       
+Y[0]                                       |Y[0]                                       
+A[7]                                       |A[7]                                       
+A[6]                                       |A[6]                                       
+A[5]                                       |A[5]                                       
+A[4]                                       |A[4]                                       
+A[3]                                       |A[3]                                       
+A[2]                                       |A[2]                                       
+A[1]                                       |A[1]                                       
+dir                                        |dir                                        
+VDD                                        |VDD                                        
+VSS                                        |VSS                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes shifter_unit and shifter_unit are equivalent.
+
+Final result: Circuits match uniquely.
+.

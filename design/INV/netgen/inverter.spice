@@ -1,0 +1,12 @@
+** sch_path:
+*+ /mnt/c/Users/DRC/Desktop/elec/4th/4th_fall/elec451/final_project/design/xschem/inverter.sch
+.subckt inverter IN VDD OUT VSS
+*.PININFO IN:I VDD:B OUT:O VSS:B
+XM2 OUT IN VDD VDD sky130_fd_pr__pfet_01v8 L=0.3 W=3 nf=3 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 OUT IN VSS VSS sky130_fd_pr__nfet_01v8 L=0.3 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+.end

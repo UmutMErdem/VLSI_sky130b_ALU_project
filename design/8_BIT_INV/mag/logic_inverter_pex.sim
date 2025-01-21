@@ -1,0 +1,52 @@
+| units: 500000 tech: sky130B format: MIT
+x A[5] Y[5] VDD VDD l=60 w=200 x=3908 y=56 sky130_fd_pr__pfet_01v8
+x A[3] VDD Y[3] VDD l=60 w=200 x=2548 y=56 sky130_fd_pr__pfet_01v8
+x A[6] VDD Y[6] VDD l=60 w=200 x=4528 y=56 sky130_fd_pr__pfet_01v8
+x A[0] Y[0] VDD VDD l=60 w=200 x=212 y=58 sky130_fd_pr__pfet_01v8
+x A[1] VSS Y[1] VSS l=60 w=200 x=950 y=-325 sky130_fd_pr__nfet_01v8
+x A[3] VDD Y[3] VDD l=60 w=200 x=2312 y=56 sky130_fd_pr__pfet_01v8
+x A[4] VDD Y[4] VDD l=60 w=200 x=3288 y=56 sky130_fd_pr__pfet_01v8
+x A[0] VSS Y[0] VSS l=60 w=200 x=212 y=-327 sky130_fd_pr__nfet_01v8
+x A[4] VSS Y[4] VSS l=60 w=200 x=3170 y=-329 sky130_fd_pr__nfet_01v8
+x A[6] Y[6] VDD VDD l=60 w=200 x=4646 y=56 sky130_fd_pr__pfet_01v8
+x A[0] VDD Y[0] VDD l=60 w=200 x=94 y=58 sky130_fd_pr__pfet_01v8
+x A[0] VDD Y[0] VDD l=60 w=200 x=330 y=58 sky130_fd_pr__pfet_01v8
+x A[1] VDD Y[1] VDD l=60 w=200 x=1068 y=62 sky130_fd_pr__pfet_01v8
+x A[5] VSS Y[5] VSS l=60 w=200 x=3908 y=-329 sky130_fd_pr__nfet_01v8
+x A[7] VDD Y[7] VDD l=60 w=200 x=5266 y=56 sky130_fd_pr__pfet_01v8
+x A[3] Y[3] VDD VDD l=60 w=200 x=2430 y=56 sky130_fd_pr__pfet_01v8
+x A[4] VDD Y[4] VDD l=60 w=200 x=3052 y=56 sky130_fd_pr__pfet_01v8
+x A[5] VDD Y[5] VDD l=60 w=200 x=3790 y=56 sky130_fd_pr__pfet_01v8
+x A[5] VDD Y[5] VDD l=60 w=200 x=4026 y=56 sky130_fd_pr__pfet_01v8
+x A[6] VDD Y[6] VDD l=60 w=200 x=4764 y=56 sky130_fd_pr__pfet_01v8
+x A[2] Y[2] VDD VDD l=60 w=200 x=1688 y=58 sky130_fd_pr__pfet_01v8
+x A[7] Y[7] VDD VDD l=60 w=200 x=5384 y=56 sky130_fd_pr__pfet_01v8
+x A[1] VDD Y[1] VDD l=60 w=200 x=832 y=62 sky130_fd_pr__pfet_01v8
+x A[2] VDD Y[2] VDD l=60 w=200 x=1806 y=58 sky130_fd_pr__pfet_01v8
+x A[4] Y[4] VDD VDD l=60 w=200 x=3170 y=56 sky130_fd_pr__pfet_01v8
+x A[7] VDD Y[7] VDD l=60 w=200 x=5502 y=56 sky130_fd_pr__pfet_01v8
+x A[1] Y[1] VDD VDD l=60 w=200 x=950 y=62 sky130_fd_pr__pfet_01v8
+x A[3] VSS Y[3] VSS l=60 w=200 x=2430 y=-329 sky130_fd_pr__nfet_01v8
+x A[2] VDD Y[2] VDD l=60 w=200 x=1570 y=58 sky130_fd_pr__pfet_01v8
+x A[2] VSS Y[2] VSS l=60 w=200 x=1688 y=-329 sky130_fd_pr__nfet_01v8
+x A[7] VSS Y[7] VSS l=60 w=200 x=5384 y=-325 sky130_fd_pr__nfet_01v8
+x A[6] VSS Y[6] VSS l=60 w=200 x=4646 y=-325 sky130_fd_pr__nfet_01v8
+R Y[7] 2656
+R Y[6] 2656
+R Y[5] 2656
+R Y[4] 2656
+R Y[3] 2656
+R A[7] 1202
+R A[6] 1202
+R A[5] 1205
+R A[4] 1205
+R A[3] 1205
+R Y[2] 2655
+R A[2] 1210
+R Y[1] 2652
+R Y[0] 2656
+R A[1] 1217
+R A[0] 1205
+C VDD GND 11.06
+R VDD 52491
+R VSS 12779

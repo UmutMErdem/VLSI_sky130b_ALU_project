@@ -1,0 +1,9 @@
+| units: 500000 tech: sky130B format: MIT
+x IN VDD OUT VDD l=60 w=200 x=94 y=62 sky130_fd_pr__pfet_01v8
+x IN VDD OUT VDD l=60 w=200 x=330 y=62 sky130_fd_pr__pfet_01v8
+x IN OUT VDD VDD l=60 w=200 x=212 y=62 sky130_fd_pr__pfet_01v8
+x IN VSS OUT VSS l=60 w=200 x=212 y=-323 sky130_fd_pr__nfet_01v8
+R OUT 2653
+R IN 1212
+R VDD 3410
+R VSS 871

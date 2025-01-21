@@ -1,0 +1,53 @@
+* NGSPICE file created from 2x1_mux.ext - technology: sky130B
+
+.subckt sky130_fd_pr__nfet_01v8_AJ3TNB a_n88_n100# a_30_n100# a_n30_n126# VSUBS
+X0 a_30_n100# a_n30_n126# a_n88_n100# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_6CQCZ3 w_n242_n262# a_88_n226# a_30_n200# a_n206_n200#
++ a_n30_n226# a_n88_n200# a_148_n200# a_n148_n226#
+X0 a_n88_n200# a_n148_n226# a_n206_n200# w_n242_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=5.8e+11p ps=4.58e+06u w=2e+06u l=300000u
+X1 a_30_n200# a_n30_n226# a_n88_n200# w_n242_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=300000u
+X2 a_148_n200# a_88_n226# a_30_n200# w_n242_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_6C4S85 a_147_n226# a_n383_n200# a_29_n226# w_n419_n262#
++ a_n265_n200# a_325_n200# a_n147_n200# a_n325_n226# a_207_n200# a_n29_n200# a_n207_n226#
++ a_265_n226# a_89_n200# a_n89_n226#
+X0 a_n265_n200# a_n325_n226# a_n383_n200# w_n419_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=5.8e+11p ps=4.58e+06u w=2e+06u l=300000u
+X1 a_89_n200# a_29_n226# a_n29_n200# w_n419_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=5.8e+11p ps=4.58e+06u w=2e+06u l=300000u
+X2 a_207_n200# a_147_n226# a_89_n200# w_n419_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=300000u
+X3 a_n147_n200# a_n207_n226# a_n265_n200# w_n419_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=300000u
+X4 a_n29_n200# a_n89_n226# a_n147_n200# w_n419_n262# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2e+06u l=300000u
+X5 a_325_n200# a_265_n226# a_207_n200# w_n419_n262# sky130_fd_pr__pfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__nfet_01v8_CSZSK8 a_147_n226# a_29_n226# a_n265_n200# a_207_n200#
++ a_n29_n200# a_n207_n226# a_n89_n226# VSUBS
+X0 a_n29_n200# a_n89_n226# a_n147_n200# VSUBS sky130_fd_pr__nfet_01v8 ad=5.8e+11p pd=4.58e+06u as=5.8e+11p ps=4.58e+06u w=2e+06u l=300000u
+X1 a_89_n200# a_29_n226# a_n29_n200# VSUBS sky130_fd_pr__nfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=300000u
+X2 a_207_n200# a_147_n226# a_89_n200# VSUBS sky130_fd_pr__nfet_01v8 ad=5.8e+11p pd=4.58e+06u as=0p ps=0u w=2e+06u l=300000u
+X3 a_n147_n200# a_n207_n226# a_n265_n200# VSUBS sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=5.8e+11p ps=4.58e+06u w=2e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_A6QCZ3 a_n88_n100# a_148_n100# a_n148_n126# w_n242_n162#
++ a_88_n126# a_30_n100# a_n206_n100# a_n30_n126#
+X0 a_148_n100# a_88_n126# a_30_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X1 a_n88_n100# a_n148_n126# a_n206_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X2 a_30_n100# a_n30_n126# a_n88_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+.ends
+
+.subckt 2x1_mux D1 S D0 OUT VSS VDD
+Xsky130_fd_pr__nfet_01v8_AJ3TNB_1 VSS OUT li_44_430# VSS sky130_fd_pr__nfet_01v8_AJ3TNB
+Xsky130_fd_pr__pfet_01v8_6CQCZ3_0 VDD D0 li_n305_n16# li_n305_n16# D0 li_44_430# li_44_430#
++ D0 sky130_fd_pr__pfet_01v8_6CQCZ3
+Xsky130_fd_pr__pfet_01v8_6CQCZ3_1 VDD D1 VDD VDD D1 li_n305_n16# li_n305_n16# D1 sky130_fd_pr__pfet_01v8_6CQCZ3
+Xsky130_fd_pr__pfet_01v8_6C4S85_0 S li_44_430# S VDD li_n305_n16# VDD li_44_430# a_90_477#
++ li_n305_n16# li_n305_n16# a_90_477# S VDD a_90_477# sky130_fd_pr__pfet_01v8_6C4S85
+Xsky130_fd_pr__nfet_01v8_CSZSK8_0 D0 a_90_477# VSS VSS li_44_430# D1 S VSS sky130_fd_pr__nfet_01v8_CSZSK8
+Xsky130_fd_pr__pfet_01v8_A6QCZ3_0 OUT OUT li_44_430# VDD li_44_430# VDD VDD li_44_430#
++ sky130_fd_pr__pfet_01v8_A6QCZ3
+Xsky130_fd_pr__pfet_01v8_A6QCZ3_2 VDD VDD S VDD S a_90_477# a_90_477# S sky130_fd_pr__pfet_01v8_A6QCZ3
+Xsky130_fd_pr__nfet_01v8_AJ3TNB_0 a_90_477# VSS S VSS sky130_fd_pr__nfet_01v8_AJ3TNB
+.ends
+

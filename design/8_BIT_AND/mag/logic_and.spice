@@ -1,0 +1,93 @@
+* NGSPICE file created from logic_and.ext - technology: sky130B
+
+.subckt sky130_fd_pr__nfet_01v8_UMD3L6 a_n33_91# a_30_n131# a_n88_n131# VSUBS
+X0 a_30_n131# a_n33_91# a_n88_n131# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__nfet_01v8_M82KHF a_n33_n257# a_30_n169# a_n88_n169# VSUBS
+X0 a_30_n169# a_n33_n257# a_n88_n169# VSUBS sky130_fd_pr__nfet_01v8 ad=5.8e+11p pd=4.58e+06u as=5.8e+11p ps=4.58e+06u w=2e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_A6G7W3 a_n88_n100# a_n266_n126# a_148_n100# a_324_n126#
++ a_n148_n126# a_206_n126# a_n560_n100# w_n596_n162# a_88_n126# a_n442_n100# a_502_n100#
++ a_n324_n100# a_n502_n126# a_384_n100# a_30_n100# a_n206_n100# a_n384_n126# a_n30_n126#
++ a_442_n126# a_266_n100#
+X0 a_502_n100# a_442_n126# a_384_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X1 a_384_n100# a_324_n126# a_266_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X2 a_266_n100# a_206_n126# a_148_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X3 a_n324_n100# a_n384_n126# a_n442_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X4 a_n442_n100# a_n502_n126# a_n560_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X5 a_148_n100# a_88_n126# a_30_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X6 a_n206_n100# a_n266_n126# a_n324_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=0p ps=0u w=1e+06u l=300000u
+X7 a_n88_n100# a_n148_n126# a_n206_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=0p ps=0u w=1e+06u l=300000u
+X8 a_30_n100# a_n30_n126# a_n88_n100# w_n596_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+.ends
+
+.subckt logic_and VSS VDD A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] B[7] B[6] B[5] B[3]
++ B[4] B[2] B[1] B[0] Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7]
+Xsky130_fd_pr__nfet_01v8_UMD3L6_0 a_2251_288# Y[1] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_UMD3L6_1 a_3749_290# Y[2] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_UMD3L6_2 a_5197_290# Y[3] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_UMD3L6_3 a_803_288# Y[0] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_UMD3L6_4 a_11111_290# Y[7] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_UMD3L6_5 a_9663_290# Y[6] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_M82KHF_10 A[6] sky130_fd_pr__nfet_01v8_M82KHF_10/a_30_n169#
++ a_9663_290# VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_UMD3L6_6 a_8165_288# Y[5] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_M82KHF_11 B[6] VSS sky130_fd_pr__nfet_01v8_M82KHF_10/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_UMD3L6_7 a_6717_288# Y[4] VSS VSS sky130_fd_pr__nfet_01v8_UMD3L6
+Xsky130_fd_pr__nfet_01v8_M82KHF_12 A[5] sky130_fd_pr__nfet_01v8_M82KHF_12/a_30_n169#
++ a_8165_288# VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_13 B[5] VSS sky130_fd_pr__nfet_01v8_M82KHF_12/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_14 B[4] VSS sky130_fd_pr__nfet_01v8_M82KHF_15/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_15 A[4] sky130_fd_pr__nfet_01v8_M82KHF_15/a_30_n169#
++ a_6717_288# VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__pfet_01v8_A6G7W3_0 VDD A[1] VDD a_2251_288# B[1] a_2251_288# VDD VDD
++ B[1] a_2251_288# Y[1] VDD A[1] VDD a_2251_288# a_2251_288# A[1] B[1] a_2251_288#
++ Y[1] sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__pfet_01v8_A6G7W3_2 VDD A[3] VDD a_5197_290# B[3] a_5197_290# VDD VDD
++ B[3] a_5197_290# Y[3] VDD A[3] VDD a_5197_290# a_5197_290# A[3] B[3] a_5197_290#
++ Y[3] sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__pfet_01v8_A6G7W3_1 VDD A[2] VDD a_3749_290# B[2] a_3749_290# VDD VDD
++ B[2] a_3749_290# Y[2] VDD A[2] VDD a_3749_290# a_3749_290# A[2] B[2] a_3749_290#
++ Y[2] sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__pfet_01v8_A6G7W3_3 VDD A[0] VDD a_803_288# B[0] a_803_288# VDD VDD
++ B[0] a_803_288# Y[0] VDD A[0] VDD a_803_288# a_803_288# A[0] B[0] a_803_288# Y[0]
++ sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__pfet_01v8_A6G7W3_4 VDD A[7] VDD a_11111_290# B[7] a_11111_290# VDD
++ VDD B[7] a_11111_290# Y[7] VDD A[7] VDD a_11111_290# a_11111_290# A[7] B[7] a_11111_290#
++ Y[7] sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__pfet_01v8_A6G7W3_5 VDD A[6] VDD a_9663_290# B[6] a_9663_290# VDD VDD
++ B[6] a_9663_290# Y[6] VDD A[6] VDD a_9663_290# a_9663_290# A[6] B[6] a_9663_290#
++ Y[6] sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__pfet_01v8_A6G7W3_6 VDD A[5] VDD a_8165_288# B[5] a_8165_288# VDD VDD
++ B[5] a_8165_288# Y[5] VDD A[5] VDD a_8165_288# a_8165_288# A[5] B[5] a_8165_288#
++ Y[5] sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__nfet_01v8_M82KHF_0 B[2] VSS sky130_fd_pr__nfet_01v8_M82KHF_3/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__pfet_01v8_A6G7W3_7 VDD A[4] VDD a_6717_288# B[4] a_6717_288# VDD VDD
++ B[4] a_6717_288# Y[4] VDD A[4] VDD a_6717_288# a_6717_288# A[4] B[4] a_6717_288#
++ Y[4] sky130_fd_pr__pfet_01v8_A6G7W3
+Xsky130_fd_pr__nfet_01v8_M82KHF_1 B[1] VSS sky130_fd_pr__nfet_01v8_M82KHF_2/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_2 A[1] sky130_fd_pr__nfet_01v8_M82KHF_2/a_30_n169#
++ a_2251_288# VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_3 A[2] sky130_fd_pr__nfet_01v8_M82KHF_3/a_30_n169#
++ a_3749_290# VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_4 A[3] sky130_fd_pr__nfet_01v8_M82KHF_4/a_30_n169#
++ a_5197_290# VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_5 B[3] VSS sky130_fd_pr__nfet_01v8_M82KHF_4/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_7 B[0] VSS sky130_fd_pr__nfet_01v8_M82KHF_6/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_6 A[0] sky130_fd_pr__nfet_01v8_M82KHF_6/a_30_n169#
++ a_803_288# VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_8 B[7] VSS sky130_fd_pr__nfet_01v8_M82KHF_9/a_30_n169#
++ VSS sky130_fd_pr__nfet_01v8_M82KHF
+Xsky130_fd_pr__nfet_01v8_M82KHF_9 A[7] sky130_fd_pr__nfet_01v8_M82KHF_9/a_30_n169#
++ a_11111_290# VSS sky130_fd_pr__nfet_01v8_M82KHF
+.ends
+

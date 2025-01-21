@@ -1,0 +1,33 @@
+* NGSPICE file created from logic_inverter.ext - technology: sky130B
+
+.subckt sky130_fd_pr__nfet_01v8_CH4TXP a_n88_n100# a_30_n100# a_n30_n126# VSUBS
+X0 a_30_n100# a_n30_n126# a_n88_n100# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__pfet_01v8_PCXB2D a_n88_n100# a_148_n100# a_n148_n126# w_n242_n162#
++ a_88_n126# a_30_n100# a_n206_n100# a_n30_n126#
+X0 a_148_n100# a_88_n126# a_30_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X1 a_n88_n100# a_n148_n126# a_n206_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X2 a_30_n100# a_n30_n126# a_n88_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+.ends
+
+.subckt logic_inverter A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] Y[7] Y[6] Y[5] Y[4]
++ Y[3] Y[2] Y[1] Y[0] VDD VSS
+Xsky130_fd_pr__nfet_01v8_CH4TXP_5 VSS Y[5] A[5] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+Xsky130_fd_pr__nfet_01v8_CH4TXP_6 VSS Y[6] A[6] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+Xsky130_fd_pr__nfet_01v8_CH4TXP_7 VSS Y[0] A[0] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+Xsky130_fd_pr__pfet_01v8_PCXB2D_1 Y[2] Y[2] A[2] VDD A[2] VDD VDD A[2] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__pfet_01v8_PCXB2D_0 Y[1] Y[1] A[1] VDD A[1] VDD VDD A[1] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__pfet_01v8_PCXB2D_2 Y[3] Y[3] A[3] VDD A[3] VDD VDD A[3] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__pfet_01v8_PCXB2D_3 Y[4] Y[4] A[4] VDD A[4] VDD VDD A[4] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__pfet_01v8_PCXB2D_4 Y[7] Y[7] A[7] VDD A[7] VDD VDD A[7] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__pfet_01v8_PCXB2D_5 Y[5] Y[5] A[5] VDD A[5] VDD VDD A[5] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__pfet_01v8_PCXB2D_6 Y[6] Y[6] A[6] VDD A[6] VDD VDD A[6] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__pfet_01v8_PCXB2D_7 Y[0] Y[0] A[0] VDD A[0] VDD VDD A[0] sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__nfet_01v8_CH4TXP_1 VSS Y[2] A[2] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+Xsky130_fd_pr__nfet_01v8_CH4TXP_0 VSS Y[1] A[1] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+Xsky130_fd_pr__nfet_01v8_CH4TXP_2 VSS Y[3] A[3] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+Xsky130_fd_pr__nfet_01v8_CH4TXP_3 VSS Y[4] A[4] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+Xsky130_fd_pr__nfet_01v8_CH4TXP_4 VSS Y[7] A[7] VSS sky130_fd_pr__nfet_01v8_CH4TXP
+.ends
+

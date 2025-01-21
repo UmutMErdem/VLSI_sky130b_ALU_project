@@ -1,0 +1,18 @@
+* NGSPICE file created from inverter.ext - technology: sky130B
+
+.subckt sky130_fd_pr__pfet_01v8_PCXB2D a_n88_n100# a_148_n100# a_n148_n126# w_n242_n162#
++ a_88_n126# a_30_n100# a_n206_n100# a_n30_n126#
+X0 a_148_n100# a_88_n126# a_30_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X1 a_n88_n100# a_n148_n126# a_n206_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+X2 a_30_n100# a_n30_n126# a_n88_n100# w_n242_n162# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=1e+06u l=300000u
+.ends
+
+.subckt sky130_fd_pr__nfet_01v8_CH4TXP a_n88_n100# a_30_n100# a_n30_n126# VSUBS
+X0 a_30_n100# a_n30_n126# a_n88_n100# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9e+11p pd=2.58e+06u as=2.9e+11p ps=2.58e+06u w=1e+06u l=300000u
+.ends
+
+.subckt inverter IN OUT VDD VSS
+Xsky130_fd_pr__pfet_01v8_PCXB2D_0 OUT OUT IN VDD IN VDD VDD IN sky130_fd_pr__pfet_01v8_PCXB2D
+Xsky130_fd_pr__nfet_01v8_CH4TXP_0 VSS OUT IN VSS sky130_fd_pr__nfet_01v8_CH4TXP
+.ends
+
